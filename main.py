@@ -24,10 +24,11 @@ class FileDialogWidget(QWidget):
 
         # Input box
         self.lineEdit = QLineEdit(self)
+        self.lineEdit.placeholderText("Enter path..")
         # layout.addWidget(self.lineEdit)
 
         # Button
-        self.btn = QPushButton("Select Directory", self)
+        self.btn = QPushButton("Find", self)
         self.btn.clicked.connect(self.openFileDialog)
         # layout.addWidget(self.btn)
 
