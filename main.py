@@ -1,5 +1,14 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLineEdit, QFileDialog
+from PyQt5.QtWidgets import (
+    QApplication,
+    QWidget,
+    QVBoxLayout,
+    QPushButton,
+    QLineEdit,
+    QFileDialog,
+    QHBoxLayout,
+)
+
 
 class FileDialogWidget(QWidget):
     def __init__(self):
@@ -7,7 +16,7 @@ class FileDialogWidget(QWidget):
         self.initUI()
 
     def initUI(self):
-        self.setWindowTitle('Select Directory')
+        self.setWindowTitle("Select Directory")
 
         # Layout
         layout = QVBoxLayout()
@@ -15,21 +24,31 @@ class FileDialogWidget(QWidget):
 
         # Input box
         self.lineEdit = QLineEdit(self)
-        layout.addWidget(self.lineEdit)
+        # layout.addWidget(self.lineEdit)
 
         # Button
-        self.btn = QPushButton('Select Directory', self)
+        self.btn = QPushButton("Select Directory", self)
         self.btn.clicked.connect(self.openFileDialog)
-        layout.addWidget(self.btn)
+        # layout.addWidget(self.btn)
+
+        # lineEditButtton widget
+        self.line_edit_button_widget = QWidget()
+        self.horizontal_layout = QHBoxLayout()
+        self.horizontal_layout.addWidget(self.lineEdit)
+        self.horizontal_layout.addWidget(self.btn)
+        self.line_edit_button_widget.setLayout(self.horizontal_layout)
+
+        layout.addWidget(self.line_edit_button_widget)
 
         self.resize(400, 100)
 
     def openFileDialog(self):
         # Open file dialog and get the selected directory path
-        path = QFileDialog.getExistingDirectory(self, 'Select Directory')
+        path = QFileDialog.getExistingDirectory(self, "Select Directory")
         if path:
             # Set the path in the input box
             self.lineEdit.setText(path)
+
 
 def main():
     app = QApplication(sys.argv)
@@ -37,5 +56,6 @@ def main():
     ex.show()
     sys.exit(app.exec_())
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
