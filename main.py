@@ -7,6 +7,7 @@ from PyQt5.QtWidgets import (
     QLineEdit,
     QFileDialog,
     QHBoxLayout,
+    QLabel,
 )
 
 
@@ -16,7 +17,7 @@ class FileDialogWidget(QWidget):
         self.initUI()
 
     def initUI(self):
-        self.setWindowTitle("Select Directory")
+        self.setWindowTitle("Datasplitter")
 
         # Layout
         layout = QVBoxLayout()
