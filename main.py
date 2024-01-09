@@ -19,13 +19,17 @@ class FileDialogWidget(QWidget):
     def initUI(self):
         self.setWindowTitle("Datasplitter")
 
+        # Label
+        self.input_label = QLabel()
+        self.input_label.setText("Enter the path sources of the images")
+
         # Layout
         layout = QVBoxLayout()
         self.setLayout(layout)
 
         # Input box
         self.lineEdit = QLineEdit(self)
-        self.lineEdit.placeholderText("Enter path..")
+        self.lineEdit.setPlaceholderText("Enter path..")
         # layout.addWidget(self.lineEdit)
 
         # Button
@@ -40,6 +44,7 @@ class FileDialogWidget(QWidget):
         self.horizontal_layout.addWidget(self.btn)
         self.line_edit_button_widget.setLayout(self.horizontal_layout)
 
+        layout.addWidget(self.input_label)
         layout.addWidget(self.line_edit_button_widget)
 
         self.resize(400, 100)
