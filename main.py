@@ -22,6 +22,10 @@ class FileDialogWidget(QWidget):
         # Label
         self.input_label = QLabel()
         self.input_label.setText("Enter the path sources of the images")
+        self.output_label = QLabel()
+        self.output_label.setText(
+            "Enter the root path for the output of the splitted images"
+        )
 
         # Layout
         layout = QVBoxLayout()
@@ -30,24 +34,34 @@ class FileDialogWidget(QWidget):
         # Input box
         self.lineEdit = QLineEdit(self)
         self.lineEdit.setPlaceholderText("Enter path..")
-        # layout.addWidget(self.lineEdit)
+        self.output_path_entry = QLineEdit()
+        self.output_path_entry.setPlaceholderText("Enter path..")
 
         # Button
         self.btn = QPushButton("Find", self)
         self.btn.clicked.connect(self.openFileDialog)
-        # layout.addWidget(self.btn)
+        self.output_btn = QPushButton("Find", self)
+        self.output_btn.clicked.connect(self.openFileDialog)
 
-        # lineEditButtton widget
+        # Input path widget
         self.line_edit_button_widget = QWidget()
         self.horizontal_layout = QHBoxLayout()
         self.horizontal_layout.addWidget(self.lineEdit)
         self.horizontal_layout.addWidget(self.btn)
         self.line_edit_button_widget.setLayout(self.horizontal_layout)
 
+        # Output path widget
+        self.output_path_widget = QWidget()
+        horizontal_layout_output = QHBoxLayout()
+        horizontal_layout_output.addWidget(self.output_path_entry)
+        horizontal_layout_output.addWidget(self.output_btn)
+        self.output_path_widget.setLayout(horizontal_layout_output)
+
         layout.addWidget(self.input_label)
         layout.addWidget(self.line_edit_button_widget)
-
-        self.resize(400, 100)
+        layout.addWidget(self.output_label)
+        layout.addWidget(self.output_path_widget)
+        self.resize(300, 100)
 
     def openFileDialog(self):
         # Open file dialog and get the selected directory path
