@@ -36,6 +36,8 @@ class PercentageTableWidget(QWidget):
             self.table.setItem(i, 1, QTableWidgetItem(default_values[i]))
 
         # Connect cell changed signal
+        # TODO
+        # Need to change to auto calculation
         self.table.cellChanged.connect(self.validate_percentages)
 
         # Layout
