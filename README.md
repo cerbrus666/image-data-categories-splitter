@@ -7,3 +7,4 @@
 ## Requirements
 
 PyQt5 >= 5.8
+NumPy
